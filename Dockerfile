@@ -28,7 +28,3 @@ RUN /usr/local/go/bin/go install github.com/dougEfresh/http-passwd-pot
 
 COPY *wrapper.sh /docker-entrypoint.d/
 COPY go-wrapper /usr/local/bin/
-
-#ENTRYPOINT ["/docker-entrypoint.sh"]
-
-#CMD [ "/opt/ssh/sbin/sshd", "-D"]
