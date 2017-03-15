@@ -1,5 +1,5 @@
 [Unit]
-Description=sshd-passwd-pot
+Description=docker-passwd-pot
 After=network.target auditd.service docker.service
 Requires=docker.service
 
