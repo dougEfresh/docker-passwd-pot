@@ -18,13 +18,10 @@ WORKDIR $GOPATH
 EXPOSE 2222
 EXPOSE 8000
 EXPOSE 2121
+ENV PASSWD_POT_OPTS --http :8000 --ftp :2121 --dry-run --syslog :514
 
-# just picking a random non root user across systems
-RUN /usr/local/go/bin/go get -v  github.com/dougEfresh/ftp-passwd-pot
-RUN /usr/local/go/bin/go get -v  github.com/dougEfresh/http-passwd-pot
-
-RUN /usr/local/go/bin/go install github.com/dougEfresh/ftp-passwd-pot
-RUN /usr/local/go/bin/go install github.com/dougEfresh/http-passwd-pot
+RUN /usr/local/go/bin/go get -v  github.com/dougEfresh/passwd-pot
+RUN /usr/local/go/bin/go install github.com/dougEfresh/passwd-pot
 
 COPY *wrapper.sh /docker-entrypoint.d/
 COPY go-wrapper /usr/local/bin/
