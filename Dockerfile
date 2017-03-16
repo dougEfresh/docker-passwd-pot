@@ -18,7 +18,7 @@ WORKDIR $GOPATH
 EXPOSE 2222
 EXPOSE 8000
 EXPOSE 2121
-ENV PASSWD_POT_OPTS --http :8000 --ftp :2121 --dry-run --syslog :514
+ENV PASSWD_POT_OPTS --bind 0.0.0.0 --all --dry-run --debug
 
 RUN /usr/local/go/bin/go get -v  github.com/dougEfresh/passwd-pot
 RUN /usr/local/go/bin/go install github.com/dougEfresh/passwd-pot
