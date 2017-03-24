@@ -18,6 +18,9 @@ WORKDIR $GOPATH
 EXPOSE 2222
 EXPOSE 8000
 EXPOSE 2121
+EXPOSE 1110
+EXPOSE 5432
+
 ENV PASSWD_POT_OPTS --bind 0.0.0.0 --all --dry-run --debug
 
 RUN /usr/local/go/bin/go get -v  github.com/dougEfresh/passwd-pot
