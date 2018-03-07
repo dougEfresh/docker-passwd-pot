@@ -1,4 +1,4 @@
-FROM dougefresh/sshd-passwd-pot:82277771801ec67844a6c060f10739049d41a645
+FROM dougefresh/sshd-passwd-pot:c5b635109175c00fef11683f508aee79565c81bd
 ENV PASSWD_POT_OPTS --bind 0.0.0.0 --all --dry-run --debug --syslog 172.17.0.1:514
 ENV PASSWD_POT_SOCKET_OPTS --dry-run --debug  --syslog 172.17.0.1:514
 ENV SSHD_OPTS -o Audit=yes -o AuditSocket=/tmp/pot.socket -o AuditUrl=http://localhost/
