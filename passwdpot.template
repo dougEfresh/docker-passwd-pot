@@ -62,7 +62,7 @@
       },
       "eu-central-1": {
         "PV64": "ami-ac221fb1",
-        "HVM64": "ami-a8221fb5",
+        "HVM64": "ami-1b2bb774",
         "HVMG2": "ami-7cd2ef61"
       },
       "ap-northeast-1": {
@@ -259,7 +259,7 @@
             "Fn::Join": [
               "",
               [
-                "#!/bin/bash -x\n",
+                "#!/bin/bash -xe\n",
                 "exec > >(tee /var/log/user-data.log|logger -t user-data ) 2>&1\n",
                 "(\n",
                 "yum update -y aws-cfn-bootstrap\n",
@@ -282,9 +282,9 @@
                   "Ref": "PasswdPotApiServer"
                 },
                 "\n",
-                "export SSHD_OPTS='-o Audit=yes -o AuditSocket=/tmp/pot.socket -o MaxAuthTries=200 -o AuditUrl=http://$API_SERVER/api/v1/event'\n",
-                "export PASSWD_POT_OPTS='--all --bind 0.0.0.0  --syslog 172.17.0.1:514 --server https://$API_SERVER'\n",
-                "export PASSWD_POT_SOCKET_OPTS='--syslog 172.17.0.1:514 --socket /tmp/pot.socket --server ${API_SERVER}:443'\n",
+                "export SSHD_OPTS=\"-o Audit=yes -o AuditSocket=/tmp/pot.socket -o MaxAuthTries=200 -o AuditUrl=http://$API_SERVER/api/v1/event\"\n",
+                "export PASSWD_POT_OPTS=\"--all --bind 0.0.0.0  --syslog 172.17.0.1:514 --server https://$API_SERVER\"\n",
+                "export PASSWD_POT_SOCKET_OPTS=\"--syslog 172.17.0.1:514 --socket /tmp/pot.socket --server ${API_SERVER}:443\"\n",
                 "dh=`curl -s  http://169.254.169.254/latest/meta-data/public-hostname`\n",
                 "docker run --hostname=$dh -d -e SSHD_OPTS -e PASSWD_POT_OPTS -e PASSWD_POT_SOCKET_OPTS ",
                 "-p 22:2222 -p 127.0.0.1:6161:6161 ",
@@ -295,7 +295,7 @@
                 },
                 "\n",
                 ")\n",
-                 "# Signal the status from cfn-init\n",
+                "# Signal the status from cfn-init\n",
                 "/opt/aws/bin/cfn-signal -e $? ",
                 "         --stack ",
                 {
