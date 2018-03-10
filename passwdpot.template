@@ -282,10 +282,16 @@
                   "Ref": "PasswdPotApiServer"
                 },
                 "\n",
-                "export SSHD_OPTS=\"-o Audit=yes -o AuditSocket=/tmp/pot.socket -o MaxAuthTries=200 -o AuditUrl=http://$API_SERVER/api/v1/event\"\n",
-                "export PASSWD_POT_OPTS=\"--all --bind 0.0.0.0  --syslog 172.17.0.1:514 --server https://$API_SERVER\"\n",
-                "export PASSWD_POT_SOCKET_OPTS=\"--syslog 172.17.0.1:514 --socket /tmp/pot.socket --server ${API_SERVER}:443\"\n",
-                "dh=`curl -s  http://169.254.169.254/latest/meta-data/public-hostname`\n",
+                "export SSHD_OPTS=\"-o Audit=yes -o AuditSocket=/tmp/pot.socket -o MaxAuthTries=200 -o AuditUrl=http://$API_SERVER/api/v1/even\"\n",
+                "export PASSWD_POT_OPTS=\"--all --bind 0.0.0.0  --syslog 172.17.0.1:514 --server https://$API_SERVER -logz ",
+                {
+                  "Ref": "LogzKey"
+                },
+                "\"\nexport PASSWD_POT_SOCKET_OPTS=\"--syslog 172.17.0.1:514  --socket /tmp/pot.socket --server ${API_SERVER}:443 --logz ",
+                {
+                  "Ref": "LogzKey"
+                },
+                "\"\ndh=`curl -s  http://169.254.169.254/latest/meta-data/public-hostname`\n",
                 "docker run --hostname=$dh -d -e SSHD_OPTS -e PASSWD_POT_OPTS -e PASSWD_POT_SOCKET_OPTS ",
                 "-p 22:2222 -p 127.0.0.1:6161:6161 ",
                 "-p 127.0.0.1:6060:6060 -p 80:8000 -p 21:2121 ",
@@ -320,22 +326,14 @@
     }
   },
   "Outputs": {
-    "URL": {
-      "Value": {
-        "Fn::Join": [
-          "",
-          [
-            "http://",
-            {
-              "Fn::GetAtt": [
-                "PasswdPotServerInstance",
-                "PublicIp"
-              ]
-            }
-          ]
-        ]
-      },
-      "Description": "Newly created application URL"
+    "host": {
+	"Value": {
+	         "Fn::GetAtt": [
+                     "PasswdPotServerInstance",
+                     "PublicIp"
+		 ]
+    },
+      "Description": "Newly created passwdpot"
     }
   },
   "Metadata": {
