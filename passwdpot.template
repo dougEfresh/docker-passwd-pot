@@ -283,7 +283,7 @@
                 },
                 "\n",
                 "export SSHD_OPTS=\"-o Audit=yes -o AuditSocket=/tmp/pot.socket -o MaxAuthTries=200 -o AuditUrl=http://$API_SERVER/api/v1/even\"\n",
-                "export PASSWD_POT_OPTS=\"--all --bind 0.0.0.0  --syslog 172.17.0.1:514 --server https://$API_SERVER -logz ",
+                "export PASSWD_POT_OPTS=\"--all --bind 0.0.0.0  --syslog 172.17.0.1:514 --server https://$API_SERVER --logz ",
                 {
                   "Ref": "LogzKey"
                 },
