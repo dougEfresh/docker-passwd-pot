@@ -45,6 +45,16 @@
         "HVM64": "ami-1ecae776",
         "HVMG2": "ami-8c6b40e4"
       },
+	"ca-central-1": {
+        "PV64": "ami-1b2bb774",
+        "HVM64": "ami-7549cc11",
+        "HVMG2": "ami-8c6b40e4"
+	},
+	"us-east-2": {
+        "PV64": "ami-1b2bb774",
+        "HVM64": "ami-710e2414",
+        "HVMG2": "ami-8c6b40e4"
+      },
       "us-west-2": {
         "PV64": "ami-ff527ecf",
         "HVM64": "ami-e7527ed7",
