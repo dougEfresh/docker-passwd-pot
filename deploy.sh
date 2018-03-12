@@ -10,7 +10,7 @@ $dockerRun --region $REGION cloudformation wait stack-delete-complete  --stack-n
 $dockerRun --region $REGION cloudformation create-stack --stack-name $stackName  --template-body file://tmp/aws/passwdpot.json \
     --parameters "ParameterKey=KeyName,ParameterValue=passwdpot" \
     "ParameterKey=PasswdPotDockerImage,ParameterValue=$IMAGE" \
-    "ParameterKey=PasswdPotApiServer,ParameterValue=api.passwd-pot.com" \
+    "ParameterKey=PasswdPotApiServer,ParameterValue=kz27gjhfrl.execute-api.eu-central-1.amazonaws.com" \
     "ParameterKey=LogzKey,ParameterValue=$LOGZ" && \
 $dockerRun --region $REGION cloudformation wait stack-create-complete   --stack-name $stackName && \
 $dockerRun --region $REGION cloudformation describe-stacks --stack-name $stackName  --query 'Stacks[*].Outputs' 
