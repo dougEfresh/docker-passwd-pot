@@ -20,3 +20,5 @@ script:
 - docker tag $REPO:$COMMIT $REPO:$COMMIT
 - docker push $REPO:$COMMIT
 - bash ./deploy.sh eu-central-1  dougefresh/docker-passwd-pot:$COMMIT
+- bash ./deploy.sh ca-central-1  dougefresh/docker-passwd-pot:$COMMIT
+- bash ./deploy.sh us-east-2  dougefresh/docker-passwd-pot:$COMMIT
