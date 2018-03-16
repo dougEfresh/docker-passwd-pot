@@ -7,7 +7,7 @@ dockerRun="docker run -v $PWD:/tmp/aws -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS
 
 $dockerRun --region $REGION cloudformation delete-stack   --stack-name $stackName && \
 $dockerRun --region $REGION cloudformation wait stack-delete-complete  --stack-name $stackName
-$dockerRun --region $REGION cloudformation create-stack --stack-name $stackName  --template-body file://tmp/aws/passwdpot.json \
+$dockerRun --region $REGION cloudformation create-stack --stack-name $stackName  --template-body file:///tmp/aws/passwdpot.json \
     --parameters "ParameterKey=KeyName,ParameterValue=passwdpot" \
     "ParameterKey=PasswdPotDockerImage,ParameterValue=$IMAGE" \
     "ParameterKey=PasswdPotApiServer,ParameterValue=api.passwd-pot.io" \
