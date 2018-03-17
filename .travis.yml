@@ -22,3 +22,4 @@ script:
 - bash ./deploy.sh eu-central-1  dougefresh/docker-passwd-pot:$COMMIT
 - bash ./deploy.sh ca-central-1  dougefresh/docker-passwd-pot:$COMMIT
 - bash ./deploy.sh us-east-2  dougefresh/docker-passwd-pot:$COMMIT
+- bash ./deploy.sh us-west-2  dougefresh/docker-passwd-pot:$COMMIT
