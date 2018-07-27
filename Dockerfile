@@ -1,7 +1,8 @@
-FROM dougefresh/sshd-passwd-pot:72dad114d97d6ce5a955c527d440977b8eb17ee0
+FROM dougefresh/sshd-passwd-pot:185e52b81f8dffcba7333e296a3fab16738dc6a4
+
 ENV PASSWD_POT_OPTS --bind 0.0.0.0 --all --dry-run --debug --syslog 172.17.0.1:514
-ENV PASSWD_POT_SOCKET_OPTS --socket /tmp/pot.socket --dry-run --debug  --syslog 172.17.0.1:514
-ENV SSHD_OPTS -o Audit=yes -o AuditSocket=/tmp/pot.socket -o AuditUrl=http://localhost/
+ENV PASSWD_POT_SOCKET_OPTS --debug --bind localhost:8889 --dry-run  --syslog 172.17.0.1:514
+ENV SSHD_OPTS -o Audit=yes -o AuditUrl=http://localhost:8889/
 
 EXPOSE 2222
 EXPOSE 8000
