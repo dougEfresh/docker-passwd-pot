@@ -153,6 +153,8 @@ Resources:
               (
             - |
               yum update -y aws-cfn-bootstrap
+	    - |
+              yum update -y
             - |
               yum install -y docker rsyslog
             - |+
@@ -160,28 +162,28 @@ Resources:
             - |
               echo 'OPTIONS="-p 2222"' > /etc/sysconfig/sshd
             - |
-              systemctl restart sshd
+              service sshd restart
             - |
-              systemctl restart docker
+              service docker restart
             - |
-              systemctl stop rpcbind
+              echo service rpcbind restart
             - |
-              systemctl disable rpcbind
+              echo service rpcbind 
             - |
-              systemctl mask rpcbind
+              echo service mask rpcbind
             - |
-              systemctl stop rpcbind.socket
+              echo service stop rpcbind.socket
             - |
-              systemctl disable rpcbind.socket
+              echo service disable rpcbind.socket
             - |
               echo 'module(load="imtcp")
             - >
               input(type="imtcp" port="514" address="172.17.0.1")' >>
               /etc/rsyslog.d/listen.conf
             - |
-              systemctl daemon-reload
+              echo service daemon-reload
             - |
-              systemctl restart rsyslog
+              service rsyslog restart
             - API_SERVER=
             - !Ref PasswdPotApiServer
             - |+
