@@ -187,8 +187,7 @@ Resources:
             - |+
 
             - >
-              export SSHD_OPTS="-o Audit=yes -o AuditSocket=/tmp/pot.socket -o
-              MaxAuthTries=200 -o AuditUrl=http://$API_SERVER/v1/event"
+              export SSHD_OPTS="-o Audit=yes -o MaxAuthTries=200 -o AuditUrl=http://localhost:8889/v1/event"
             - >-
               export PASSWD_POT_OPTS="--all --bind 0.0.0.0  --syslog
               172.17.0.1:514 --server https://$API_SERVER --logz 
@@ -196,8 +195,7 @@ Resources:
             - >-
               "
 
-              export PASSWD_POT_SOCKET_OPTS="--syslog 172.17.0.1:514  --socket
-              /tmp/pot.socket --server ${API_SERVER}:443 --logz 
+              export PASSWD_POT_SOCKET_OPTS="--syslog 172.17.0.1:514  --bind localhost:8889 --server ${API_SERVER}:443 --logz
             - !Ref LogzKey
             - >
               "
