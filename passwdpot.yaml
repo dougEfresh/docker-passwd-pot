@@ -189,7 +189,7 @@ Resources:
             - >-
               "
 
-              export PASSWD_POT_PROXY_OPTS="--bind localhost:8889 --server https://${API_SERVER} --logz
+              export PASSWD_POT_PROXY_OPTS="--bind localhost:8889 --server https://${API_SERVER} --logz 
             - !Ref LogzKey
             - >
               "
