@@ -202,7 +202,7 @@ Resources:
             - '-p 22:2222 -p 127.0.0.1:6161:6161 '
             - '-p 127.0.0.1:6060:6060 -p 80:8000 -p 21:2121 '
             - '-p 8080:8000 -p 8000:8000 -p 8888:8000 -p 110:1110 -p 5432:543 '
-	    - '-v /var/log/passwd-pot:/var/log/passwd-pot '
+            - '-v /var/log/passwd-pot:/var/log/passwd-pot '
             - !Ref PasswdPotDockerImage
             - |+
 
