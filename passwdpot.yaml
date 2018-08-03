@@ -184,7 +184,7 @@ Resources:
               export SSHD_OPTS="-o Audit=yes -o MaxAuthTries=200 -o AuditUrl=http://localhost:8889/v1/event"
             - >-
               export PASSWD_POT_OPTS="--all --bind 0.0.0.0 
-              --server https://$API_SERVER --logz 
+              --server http://localhost:8889 --logz 
             - !Ref LogzKey
             - >-
               "
